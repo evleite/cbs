@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.bb.cbs</groupId>
+    <artifactId>core-banking</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Core Banking System</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>cbs-core</module>
+        <module>cbs-soap</module>
+        <module>cbs-web</module>
+    </modules>
+
+    <properties>
+
+        <java.version>1.8</java.version>
+        <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
+        <maven.web.plugin.version>3.0.0</maven.web.plugin.version>
+
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <javax.jstl.version>1.2</javax.jstl.version>
+        <springframework.version>4.3.5.RELEASE</springframework.version>
+        <spring.jaxws.version>1.9</spring.jaxws.version>
+        <jaxws.rt.version>2.2.10</jaxws.rt.version>
+        <jackson.version>2.8.5</jackson.version>
+
+        <mysql.connector.version>6.0.5</mysql.connector.version>
+        <cglib.version>3.2.4</cglib.version>
+        <mybatis.version>3.4.1</mybatis.version>
+        <mybatis.spring.version>1.3.0</mybatis.spring.version>
+
+        <commons.dbcp.version>1.4</commons.dbcp.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
+        <commons.lang3.version>3.5</commons.lang3.version>
+        <commons.fileupload.version>1.3.2</commons.fileupload.version>
+
+        <slf4j.version>1.7.22</slf4j.version>
+        <logback.version>1.1.8</logback.version>
+
+        <junit.version>4.12</junit.version>
+
+    </properties>
+
+</project>
