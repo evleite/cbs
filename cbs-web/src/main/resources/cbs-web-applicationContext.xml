@@ -10,9 +10,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	">
 
-    <context:component-scan base-package="org.bb.cbs" />
-    <mvc:resources mapping="/contents/**" location="/contents/" />
-    <mvc:annotation-driven />
+
 
     <!--<import resource="classpath:spring/cbs-core-applicationContext.xml"/>-->
 

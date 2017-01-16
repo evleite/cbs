@@ -13,6 +13,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.bb.cbs</groupId>
+            <artifactId>cbs-dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${springframework.version}</version>

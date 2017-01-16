@@ -17,11 +17,15 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="systems.openworldaware.core" level="debug" additivity="false">
+	<logger name="org.bb.cbs.core" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="systems.openworldaware.mrs" level="debug" additivity="false">
+	<logger name="org.bb.cbs.rest" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.bb.cbs.soap" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 

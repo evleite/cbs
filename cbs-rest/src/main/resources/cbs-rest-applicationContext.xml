@@ -10,19 +10,6 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	">
 
-    <context:component-scan base-package="org.bb.cbs.web" />
-    <mvc:resources mapping="/contents/**" location="/contents/" />
-    <mvc:annotation-driven />
-
-    <!-- view resolver  -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix"><value>/views/</value></property>
-        <property name="suffix"><value>.jsp</value></property>
-    </bean>
-
-    <!-- multipart view resolver  -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="50000000"/>
-    </bean>
+    <!--<import resource="classpath:spring/cbs-core-applicationContext.xml"/>-->
 
 </beans>

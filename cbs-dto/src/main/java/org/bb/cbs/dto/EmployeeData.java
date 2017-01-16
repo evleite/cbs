@@ -1,7 +1,7 @@
-package org.bb.cbs.core.vo;
+package org.bb.cbs.dto;
 
 /**
- * Created by newton on 1/7/17.
+ * Created by newton on 1/17/17.
  */
 public class EmployeeData extends BaseData {
 
@@ -42,4 +42,5 @@ public class EmployeeData extends BaseData {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }

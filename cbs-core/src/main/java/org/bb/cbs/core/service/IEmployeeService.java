@@ -1,6 +1,7 @@
 package org.bb.cbs.core.service;
 
-import org.bb.cbs.core.vo.EmployeeData;
+
+import org.bb.cbs.dto.EmployeeData;
 
 import java.util.List;
 

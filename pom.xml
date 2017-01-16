@@ -11,6 +11,8 @@
 
     <modules>
         <module>cbs-core</module>
+        <module>cbs-dto</module>
+        <module>cbs-rest</module>
         <module>cbs-soap</module>
         <module>cbs-web</module>
     </modules>

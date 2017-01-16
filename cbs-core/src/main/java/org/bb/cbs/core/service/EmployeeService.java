@@ -1,6 +1,6 @@
 package org.bb.cbs.core.service;
 
-import org.bb.cbs.core.vo.EmployeeData;
+import org.bb.cbs.dto.EmployeeData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

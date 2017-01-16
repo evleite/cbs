@@ -1,7 +1,7 @@
 package org.bb.cbs.soap;
 
 import org.bb.cbs.core.service.IEmployeeService;
-import org.bb.cbs.core.vo.EmployeeData;
+import org.bb.cbs.dto.EmployeeData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
