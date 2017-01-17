@@ -4,6 +4,7 @@ package org.bb.cbs.core.service;
 import org.bb.cbs.dto.EmployeeData;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by newton on 1/7/17.
@@ -24,4 +25,13 @@ public interface IEmployeeService {
      * @throws Exception
      */
     EmployeeData updateEmployee(EmployeeData employee) throws Exception;
+
+    /**
+     * Delete employee
+     * @param params
+     * @return true on success, false on failure
+     * @throws Exception
+     */
+    boolean deleteEmployee(Map<String, Object> params) throws Exception;
+
 }

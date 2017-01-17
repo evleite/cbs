@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by newton on 1/7/17.
@@ -52,6 +53,19 @@ public class EmployeeService extends BaseService implements IEmployeeService {
     public EmployeeData updateEmployee(EmployeeData employee) throws Exception {
         System.out.print(employee.toString());
         return employee;
+    }
+
+    /**
+     * Delete employee
+     *
+     * @param params
+     * @return true on success, false on failure
+     * @throws Exception
+     */
+    @Override
+    public boolean deleteEmployee(Map<String, Object> params) throws Exception {
+        System.out.print(params);
+        return true;
     }
 
 }
