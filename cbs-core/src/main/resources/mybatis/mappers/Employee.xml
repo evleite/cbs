@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.bb.cbs.core.dao.EmployeeDAO"  >
+
+    <resultMap id="employeeResult" type="org.bb.cbs.dto.EmployeeData">
+        <result property="employeeID" column="EmployeeID" />
+        <result property="name" column="Name" />
+        <result property="email" column="Email" />
+    </resultMap>
+
+    <insert id='createEmployee' parameterType='org.bb.cbs.dto.EmployeeData' keyProperty='patientID'>
+        INSERT INTO Employee (EmployeeID, Name, Email)
+        VALUES(#{employeeID}, #{name}, #{email})
+    </insert>
+
+    <update id="updateEmployee" parameterType="org.bb.cbs.dto.EmployeeData">
+        UPDATE Employee SET
+            Name = #{name},
+            Email = #{email}
+        WHERE EmployeeID = #{employeeID}
+    </update>
+
+    <delete id="deleteEmployee" parameterType="java.util.Map">
+        DELETE FROM Employee WHERE EmployeeID = #{employeeID}
+    </delete>
+
+    <select id="getEmployees" parameterType="java.util.Map" resultMap="employeeResult" >
+        SELECT
+            emp.EmployeeID,
+            emp.Name,
+            emp.EMAIL
+        FROM Employee emp
+        WHERE 1 = 1
+        <if test="employeeID != null" > AND emp.EmployeeID = #{employeeID} </if>
+        ORDER BY emp.Name
+    </select>
+
+</mapper>

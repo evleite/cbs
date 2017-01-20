@@ -13,25 +13,24 @@ public interface IEmployeeService {
 
     /**
      * Get a list of employees
-     * @return list of EmployeeData
+     * @param param
+     * @return List of EmployeeData
      * @throws Exception
      */
-    List<EmployeeData> getEmployees() throws Exception;
+    List<EmployeeData> getEmployees(Map<String, Object> param) throws Exception;
 
     /**
      * Create or update an employee
      * @param employee
-     * @return true on success, false on failure
      * @throws Exception
      */
-    EmployeeData updateEmployee(EmployeeData employee) throws Exception;
+    void updateEmployee(EmployeeData employee) throws Exception;
 
     /**
      * Delete employee
      * @param params
-     * @return true on success, false on failure
      * @throws Exception
      */
-    boolean deleteEmployee(Map<String, Object> params) throws Exception;
+    void deleteEmployee(Map<String, Object> params) throws Exception;
 
 }

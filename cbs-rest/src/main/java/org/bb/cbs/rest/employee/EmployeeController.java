@@ -1,6 +1,7 @@
 package org.bb.cbs.rest.employee;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bb.cbs.core.service.IEmployeeService;
 import org.bb.cbs.dto.EmployeeData;
 import org.slf4j.Logger;
@@ -8,9 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by newton on 1/17/17.
@@ -26,15 +25,26 @@ public class EmployeeController {
 
     @ResponseBody
     @RequestMapping(value = "/rest/employee", method = RequestMethod.GET)
-    public List<EmployeeData> getEmployees() {
+    public List<EmployeeData> getEmployees(@RequestParam(name="employeeID", required = false) Integer employeeID, @RequestParam(name="empName", required = false) String empName) {
         List<EmployeeData> employees = null;
 
+        // Map the request parameters
+        Map<String, Object> param = new HashMap();
+        if(employeeID != null) {
+            param.put("employeeID", employeeID);
+        }
+        if(StringUtils.isNotBlank(empName)) {
+            param.put("name", empName);
+        }
+
+        // Try fetching employees
         try {
-            employees = this.employeeService.getEmployees();
+            employees = this.employeeService.getEmployees(param);
         } catch (Exception e) {
             log.error("Error on retrieving employees", e);
         }
 
+        // Return empty list in case of null
         if(CollectionUtils.isEmpty(employees)) {
             employees = Collections.EMPTY_LIST;
         }
@@ -46,11 +56,11 @@ public class EmployeeController {
     @RequestMapping(value = "/rest/employee", method = RequestMethod.POST)
     public EmployeeData updateEmployee(@RequestBody EmployeeData employee) {
         try {
-            return this.employeeService.updateEmployee(employee);
+            this.employeeService.updateEmployee(employee);
         } catch (Exception e) {
             log.error("Error on updating employees", e);
         }
-        return null;
+        return employee;
     }
 
 }

@@ -1,15 +1,15 @@
 package org.bb.cbs.core.service;
 
+import org.bb.cbs.core.dao.EmployeeDAO;
 import org.bb.cbs.dto.EmployeeData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by newton on 1/7/17.
@@ -21,25 +21,18 @@ public class EmployeeService extends BaseService implements IEmployeeService {
 
     private static final Logger log = LoggerFactory.getLogger(EmployeeService.class);
 
+    @Autowired
+    private EmployeeDAO employeeDAO;
+
     /**
      * Get a list of employees
-     *
-     * @return list of EmployeeData
+     * @param param
+     * @return List of EmployeeData
      * @throws Exception
      */
     @Override
-    public List<EmployeeData> getEmployees() throws Exception {
-        List<EmployeeData> employees = new ArrayList<>();
-
-        for (int i=0; i<5; i++) {
-            EmployeeData emp = new EmployeeData();
-            emp.setEmployeeID(i+1);
-            emp.setName("Name" + i);
-            emp.setEmail("eamail" + i + "@gmail.com");
-            employees.add(emp);
-        }
-
-        return employees;
+    public List<EmployeeData> getEmployees(Map<String, Object> param) throws Exception {
+        return this.employeeDAO.getEmployees(param);
     }
 
     /**
@@ -50,9 +43,20 @@ public class EmployeeService extends BaseService implements IEmployeeService {
      * @throws Exception
      */
     @Override
-    public EmployeeData updateEmployee(EmployeeData employee) throws Exception {
-        System.out.print(employee.toString());
-        return employee;
+    public void updateEmployee(EmployeeData employee) throws Exception {
+
+        if(employee == null) {
+            throw new Exception("Employee cannot be null");
+        }
+
+        if(employee.getEmployeeID() == null || employee.getEmployeeID().intValue() == 0) {
+            Random generator = new Random();
+            int i = generator.nextInt(10);
+            employee.setEmployeeID(i);
+            this.employeeDAO.createEmployee(employee);
+        } else {
+            this.employeeDAO.updateEmployee(employee);
+        }
     }
 
     /**
@@ -63,9 +67,8 @@ public class EmployeeService extends BaseService implements IEmployeeService {
      * @throws Exception
      */
     @Override
-    public boolean deleteEmployee(Map<String, Object> params) throws Exception {
-        System.out.print(params);
-        return true;
+    public void deleteEmployee(Map<String, Object> params) throws Exception {
+        this.employeeDAO.deleteEmployee(params);
     }
 
 }

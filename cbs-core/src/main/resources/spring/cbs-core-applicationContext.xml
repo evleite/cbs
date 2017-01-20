@@ -17,6 +17,37 @@
         </property>
     </bean>
 
+    <!--
+        https://hub.docker.com/r/alexeiled/docker-oracle-xe-11g/
+        hostname: localhost
+        port: 1521
+        sid: xe
+        username: system or SYS
+        password: oracle
+        http://localhost:8080/apex
+    -->
+    <!--docker run -d &#45;&#45;shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>
+        <property name="username" value="system"/>
+        <property name="password" value="oracle"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:mybatis/mybatis-conf.xml" />
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.bb.cbs.core.dao" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
     <context:component-scan base-package="org.bb.cbs.core" />
 
 </beans>

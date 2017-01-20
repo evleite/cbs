@@ -11,7 +11,9 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by newton on 1/7/17.
@@ -30,7 +32,8 @@ public class EmployeeWebService {
     public List<EmployeeData> getEmployeeList() {
         List<EmployeeData> employees = Collections.EMPTY_LIST;
         try {
-            employees =  this.employeeService.getEmployees();
+            Map<String, Object> param = new HashMap();
+            employees =  this.employeeService.getEmployees(param);
         } catch (Exception e) {
             log.error("Error on getting the list of employees", e);
         }
@@ -39,13 +42,12 @@ public class EmployeeWebService {
 
     @WebMethod(operationName = "updateEmployee")
     public EmployeeData updateEmployee(@WebParam EmployeeData employee) {
-        EmployeeData empResponse = null;
         try {
-            empResponse = this.employeeService.updateEmployee(employee);
+            this.employeeService.updateEmployee(employee);
         } catch (Exception e) {
             log.error("Error on creating employee record", e);
         }
-        return empResponse;
+        return employee;
     }
 
 }
