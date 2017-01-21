@@ -21,7 +21,7 @@ public class EmployeeRestClient {
 
     public static List<EmployeeData> getEmployees(Integer employeeID, String empName) {
 
-        String url = "http://localhost:8081/cbs-rest/rest/employee";
+        String url = "http://localhost:8080/cbs-rest/rest/employee";
 
         // Query parameters
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
@@ -35,14 +35,13 @@ public class EmployeeRestClient {
     }
 
     public static EmployeeData updateEmployee(EmployeeData employee) {
-        String url = "http://localhost:8081/cbs-rest/rest/employee";
-        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://localhost:8080/cbs-rest/rest/employee";
         HttpEntity<EmployeeData> request = new HttpEntity<>(employee);
         return EmployeeRestClient.restTemplate.postForObject(url, request, EmployeeData.class);
     }
 
     public static void deleteEmployee(Integer employeeID) {
-        String url = "http://localhost:8081/cbs-rest/rest/employee/{employeeID}";
+        String url = "http://localhost:8080/cbs-rest/rest/employee/{employeeID}";
 
         // URI (URL) parameters
         Map<String, String> uriParams = new HashMap<>();
