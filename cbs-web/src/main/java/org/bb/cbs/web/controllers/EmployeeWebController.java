@@ -18,32 +18,9 @@ public class EmployeeWebController {
 
     private static final Logger log = LoggerFactory.getLogger(EmployeeWebController.class);
 
-
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public String getEmployees(ModelMap model) {
-        /*ListEmployeesResponse response = this.soapClient.getEmployees();
-        model.put("employees", response.getReturn());*/
         return "employee/list";
-    }
-
-    @RequestMapping(value = "/employee/add", method = RequestMethod.GET)
-    public String getNewEmployeeForm(ModelMap model) {
-        /*EmployeeData employee = new EmployeeData();
-        model.put("employee", employee);*/
-        return "employee/edit";
-    }
-
-    @RequestMapping(value = "/employee/update", method = RequestMethod.POST)
-    public String updateEmployee(@ModelAttribute("employee")EmployeeData employee, ModelMap model) {
-        String returnPath = "employee/edit";
-        try {
-            /*employee = this.soapClient.updateEmployee(employee);
-            model.put("employee", employee);*/
-            returnPath = "redirect:/employee";
-        } catch (Exception e) {
-            log.error("Error on updating employee", e);
-        }
-        return returnPath;
     }
 
 }
