@@ -10,19 +10,19 @@
     </resultMap>
 
     <insert id='createEmployee' parameterType='org.bb.cbs.dto.EmployeeData' keyProperty='patientID'>
-        INSERT INTO Employee (EmployeeID, Name, Email)
+        INSERT INTO HR.Employee (EmployeeID, Name, Email)
         VALUES(#{employeeID}, #{name}, #{email})
     </insert>
 
     <update id="updateEmployee" parameterType="org.bb.cbs.dto.EmployeeData">
-        UPDATE Employee SET
+        UPDATE HR.Employee SET
             Name = #{name},
             Email = #{email}
         WHERE EmployeeID = #{employeeID}
     </update>
 
     <delete id="deleteEmployee" parameterType="java.util.Map">
-        DELETE FROM Employee WHERE EmployeeID = #{employeeID}
+        DELETE FROM HR.Employee WHERE EmployeeID = #{employeeID}
     </delete>
 
     <select id="getEmployees" parameterType="java.util.Map" resultMap="employeeResult" >
@@ -30,7 +30,7 @@
             emp.EmployeeID,
             emp.Name,
             emp.EMAIL
-        FROM Employee emp
+        FROM HR.Employee emp
         WHERE 1 = 1
         <if test="employeeID != null" > AND emp.EmployeeID = #{employeeID} </if>
         ORDER BY emp.Name

@@ -63,4 +63,22 @@ public class EmployeeController {
         return employee;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/rest/employee/{employeeID}", method = RequestMethod.DELETE)
+    public int deleteEmployees(@PathVariable("employeeID") Integer employeeID) {
+        int flag = 0;
+
+        // Map the request parameters
+        Map<String, Object> param = new HashMap();
+        param.put("employeeID", employeeID);
+        try {
+            this.employeeService.deleteEmployee(param);
+            flag = 1;
+        } catch (Exception e) {
+            log.error("Error on deleting employee", e);
+        }
+
+        return flag;
+    }
+
 }

@@ -1,8 +1,12 @@
 package org.bb.cbs.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by newton on 1/17/17.
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmployeeData extends BaseData {
 
     private Integer employeeID;

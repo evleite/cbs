@@ -27,13 +27,14 @@
         http://localhost:8080/apex
     -->
     <!--docker run -d &#45;&#45;shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g-->
+    <!--http://www.mkyong.com/maven/how-to-add-oracle-jdbc-driver-in-your-maven-local-repository/-->
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>
-        <property name="username" value="system"/>
+    <bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+        <property name="URL" value="jdbc:oracle:thin:@//localhost:1521/XE"/>
+        <property name="user" value="system"/>
         <property name="password" value="oracle"/>
     </bean>
+
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />

@@ -17,32 +17,31 @@
         <module>cbs-web</module>
     </modules>
 
-    <!--<repositories>
+    <repositories>
         <repository>
             <id>maven.oracle.com</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <name>oracle-maven-repo</name>
             <url>https://maven.oracle.com</url>
             <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>maven.oracle.com</id>
+            <name>oracle-maven-repo</name>
             <url>https://maven.oracle.com</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
         </pluginRepository>
-    </pluginRepositories>-->
-
-    <!--<repositories>
-        <repository>
-            <id>mesir-repo</id>
-            <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
-        </repository>
-    </repositories>-->
+    </pluginRepositories>
 
     <properties>
 
@@ -58,7 +57,6 @@
         <jaxws.rt.version>2.2.10</jaxws.rt.version>
         <jackson.version>2.8.5</jackson.version>
 
-        <ojdbc6.version>11.2.0.3</ojdbc6.version>
         <ojdbc7.version>12.1.0.1</ojdbc7.version>
         <cglib.version>3.2.4</cglib.version>
         <mybatis.version>3.4.2</mybatis.version>
