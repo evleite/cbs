@@ -29,7 +29,11 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<root level="error">
+	<logger name="org.bb.cbs.web" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 
