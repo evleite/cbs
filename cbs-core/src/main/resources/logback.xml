@@ -13,10 +13,6 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="org.springframework" level="debug" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-
 	<logger name="org.bb.cbs.core" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
@@ -30,6 +26,14 @@
 	</logger>
 
 	<logger name="org.bb.cbs.web" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.springframework" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="javax.servlet" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 

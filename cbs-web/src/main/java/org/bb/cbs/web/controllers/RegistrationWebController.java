@@ -1,7 +1,7 @@
 package org.bb.cbs.web.controllers;
 
 import org.bb.cbs.dto.UserData;
-import org.bb.cbs.web.security.SecurityService;
+import org.bb.cbs.web.security.ISecurityService;
 import org.bb.cbs.web.security.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegistrationWebController {
 
     @Autowired
-    private SecurityService securityService;
+    private ISecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
@@ -53,6 +53,12 @@ public class RegistrationWebController {
             model.addAttribute("message", "You have been logged out successfully.");
 
         return "registration/login";
+    }
+
+    @RequestMapping(value = "/app/test", method = RequestMethod.GET)
+    public String test(Model model, String error, String logout) {
+
+        return "test";
     }
 
 }

@@ -14,7 +14,7 @@ import org.springframework.validation.Validator;
 public class UserValidator implements Validator {
 
     @Autowired
-    private SecurityService securityService;
+    private IUserAuthService userAuthService;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -30,7 +30,7 @@ public class UserValidator implements Validator {
         if (user.getUserName().length() < 6 || user.getUserName().length() > 32) {
             errors.rejectValue("userName", "Size.userForm.username");
         }
-        if (this.securityService.findByUsername(user.getUserName()) != null) {
+        if (this.userAuthService.findByUsername(user.getUserName()) != null) {
             errors.rejectValue("userName", "Duplicate.userForm.username");
         }
 

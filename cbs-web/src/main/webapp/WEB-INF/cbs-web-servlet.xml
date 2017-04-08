@@ -35,23 +35,4 @@
         <property name="maxUploadSize" value="50000000"/>
     </bean>
 
-    <bean id="securityService" class="org.bb.cbs.web.security.SecurityService" />
-
-    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-        <constructor-arg name="strength" value="16" />
-    </bean>
-
-    <security:authentication-manager alias="authenticationManager">
-        <security:authentication-provider user-service-ref="securityService">
-            <security:password-encoder ref="bCryptPasswordEncoder"></security:password-encoder>
-        </security:authentication-provider>
-    </security:authentication-manager>
-
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/" access="hasRole('admin')"/>
-        <security:intercept-url pattern="/welcome" access="hasRole('admin')"/>
-        <security:form-login login-page="/login" default-target-url="/employee" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
-        <security:logout logout-success-url="/login?logout" />
-    </security:http>
-
 </beans>
